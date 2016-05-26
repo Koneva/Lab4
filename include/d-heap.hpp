@@ -21,7 +21,9 @@ public:
 		//ValType operator[](int idx)const {return keys[idx];};
 		D_HEAP operator=(const D_HEAP&);
 		
-		ValType GetKey(int idx) {return keys[idx];};
+		ValType GetKey(int idx) {	if(idx < 0) throw exception ("invalid idx");
+									if(idx >= size_tree) throw exception ("invalid idx");
+									return keys[idx];};
 		int GetSizeChild() {return size_child;};
 		int GetSizeMass() {return size_mass;};
 		int GetSizeTree() {return size_tree;};
@@ -32,7 +34,6 @@ public:
 		void SiftDown(int);
 		int MinChild(int);
 		void Hilling();
-		void Sort();
 
 		void RemoveIdx(int);
 		void RemoveIdxMin();   //удалить минимального насленика
